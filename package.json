@@ -1,0 +1,28 @@
+{
+  "name": "getirassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "json-server -p 5000 --watch db.json",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baranozbekk/getirassignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baranozbekk/getirassignment/issues"
+  },
+  "homepage": "https://github.com/baranozbekk/getirassignment#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
