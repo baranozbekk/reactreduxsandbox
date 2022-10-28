@@ -48,14 +48,7 @@ const Products = ({ dbData, changeSelectedItemType }) => {
             {items &&
               items
                 .filter((e) => e.itemType === selected)
-                .map((item) => (
-                  <ProductItem
-                    key={item.slug}
-                    price={item.price}
-                    name={item.name}
-                    itemType={item.itemType}
-                  />
-                ))}
+                .map((item) => <ProductItem key={item.slug} item={item} />)}
           </div>
         </div>
       </div>
