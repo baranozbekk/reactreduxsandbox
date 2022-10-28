@@ -1,22 +1,8 @@
-import { useEffect } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
-import {
-  fetchItemsData,
-  fetchCompaniesData,
-} from '../../state/actions/dbDataActions'
-
 import Cart from './Cart'
 
 import logo from './Logo.svg'
 
-const Header = ({ fetchItemsData, fetchCompaniesData, dbData }) => {
-  useEffect(() => {
-    console.log('db is: ', dbData)
-    fetchItemsData()
-    fetchCompaniesData()
-    // eslint-disable-next-line
-  }, [])
+export default function Header() {
   return (
     <>
       <div id="header">
@@ -30,17 +16,3 @@ const Header = ({ fetchItemsData, fetchCompaniesData, dbData }) => {
     </>
   )
 }
-
-Header.propTypes = {
-  dbData: PropTypes.object.isRequired,
-  fetchItemsData: PropTypes.func.isRequired,
-  fetchCompaniesData: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = (state) => ({
-  dbData: state.dbData,
-})
-
-export default connect(mapStateToProps, { fetchItemsData, fetchCompaniesData })(
-  Header,
-)

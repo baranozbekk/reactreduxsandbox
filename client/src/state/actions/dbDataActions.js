@@ -10,11 +10,9 @@ import {
 import axios from 'axios'
 
 export const fetchItemsData = () => async (dispatch) => {
-  console.log('fetchItemsData called')
   try {
     setLoadingTrue()
     const res = await axios.get('/items')
-    console.log('res.data: ', res)
     dispatch({
       type: FETCH_ITEMS_DATA,
       payload: res.data,
@@ -28,11 +26,9 @@ export const fetchItemsData = () => async (dispatch) => {
 }
 
 export const fetchCompaniesData = () => async (dispatch) => {
-  console.log('fetchCompaniesData called')
   try {
     setLoadingTrue()
     const res = await axios.get('/companies')
-    console.log('res.data: ', res)
     dispatch({
       type: FETCH_COMPANIES_DATA,
       payload: res.data,

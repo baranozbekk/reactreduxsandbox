@@ -19,7 +19,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ITEMS_DATA: {
-      console.log('FETCH_ITEMS_DATA called: ', action.payload)
       return {
         ...state,
         items: action.payload,

@@ -9,6 +9,7 @@ html {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+  background-color: #fafafa;
 }
 
 /* Global Styles */
@@ -16,6 +17,7 @@ html {
 :root {
   --primary-color: #1ea4ce;
   --secondary-color: #147597;
+  --third-color: #f2f0fd;
 }
 
 #header {
@@ -24,6 +26,7 @@ html {
   background-color: var(--primary-color);
   display: flex;
   justify-content: center;
+  margin-bottom: 38px;
 }
 
 .header-container {
@@ -82,6 +85,8 @@ html {
 
 .total-price {
   color: #fff;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
 }
 
 .cartDetail {
@@ -180,4 +185,120 @@ html {
   font-size: 14px;
   font-weight: 600;
   line-height: 16px;
+}
+
+#products {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 608px;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+
+.products-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.products-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #6f6f6f;
+}
+
+.product-type-selector-container {
+  display: flex;
+  gap: 8px;
+}
+
+.product-type {
+  padding: 6px 16px;
+  background-color: var(--third-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  border-radius: 2px;
+}
+
+.product-type:hover {
+  cursor: pointer;
+}
+
+.selected-product-type {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+.product-items {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.product-items-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.product-item-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.product-item-image-container {
+  padding: 16px;
+  border: 2px solid #f3f0fe;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-item-image {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+}
+
+.product-price {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.product-title {
+  text-align: left;
+  color: #191919;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.add-button {
+  width: 100%;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  padding: 1px 0px;
+  margin-top: auto;
+}
+
+.add-button:hover {
+  cursor: pointer;
+}
+
+.add-button-text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
 }
