@@ -7,5 +7,5 @@ import cartReducer from '../reducers/cartReducer'
 export default combineReducers({
   dbData: dbDataReducer,
   userPreferences: userPreferencesReducer,
-  cart: cartReducer,
+  cartData: cartReducer,
 })

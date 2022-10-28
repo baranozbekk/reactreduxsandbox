@@ -15,104 +15,84 @@ const Home = ({ fetchItemsData, fetchCompaniesData, dbData }) => {
     fetchCompaniesData()
     // eslint-disable-next-line
   }, [])
-  // const fetchData = async () => {
-  //   try {
-  //     const res = await axios.get('/items')
 
-  //     //Check if the data is unique start
-  //     const specificData = res.data.map((e) => e.slug)
-  //     const isUnique = !specificData.some((e, i, arr) => arr.indexOf(e) !== i)
-  //     // console.log('isUnique: ', isUnique)
-  //     //Check if the data is unique end
+  // These comments below are the sorting, and filtering methods. Sinec I ran out of time I commented them down.
 
-  //     //Get item types start
-  //     const onlyItemTypesArray = res.data.map((e) => e.itemType)
-  //     const uniqueItemTypes = [...new Set(onlyItemTypesArray)]
-  //     // console.log('Item types: ', uniqueItemTypes)
-  //     //Get item types end
+  // //Check if the data is unique start
+  // const specificData = dbData.items.map((e) => e.slug)
+  // const isUnique = !specificData.some((e, i, arr) => arr.indexOf(e) !== i)
+  // //Check if the data is unique end
 
-  //     //Filter by item type start
-  //     let itemFilter = 'mug'
-  //     const filteredByItemType = res.data.filter(
-  //       (e) => e.itemType === itemFilter,
-  //     )
-  //     // console.log('Filtered items: ', filteredByItemType)
-  //     //Filter by item type end
+  // //Get item types start
+  // const onlyItemTypesArray = dbData.items.map((e) => e.itemType)
+  // const uniqueItemTypes = [...new Set(onlyItemTypesArray)]
+  // //Get item types end
 
-  //     //Sort by price start
-  //     const lowestToHighestPrice = [...res.data].sort(
-  //       (a, b) => a.price - b.price,
-  //     )
-  //     const highestToLowestPrice = [...res.data]
-  //       .sort((a, b) => a.price - b.price)
-  //       .reverse()
-  //     // console.log('Price low to high: ', lowestToHighestPrice)
-  //     // console.log('Price high to low: ', highestToLowestPrice)
-  //     //Sort by price end
+  // //Filter by item type start
+  // let itemFilter = 'mug'
+  // const filteredByItemType = dbData.items.filter(
+  //   (e) => e.itemType === itemFilter,
+  // )
+  // //Filter by item type end
 
-  //     //Sort by added start
-  //     const oldestToNewestItem = [...res.data].sort((a, b) => a.added - b.added)
-  //     const newestToOldestItem = [...res.data]
-  //       .sort((a, b) => a.added - b.added)
-  //       .reverse()
-  //     // console.log('Old to new: ', oldestToNewestItem)
-  //     // console.log('New to old: ', newestToOldestItem)
-  //     //Sort by added end
+  // //Sort by price start
+  // const lowestToHighestPrice = [...dbData.items].sort(
+  //   (a, b) => a.price - b.price,
+  // )
+  // const highestToLowestPrice = [...dbData.items]
+  //   .sort((a, b) => a.price - b.price)
+  //   .reverse()
+  // //Sort by price end
 
-  //     //Return unique brands start
-  //     const onlyBrandsArray = res.data.map((e) => e.manufacturer)
-  //     const uniqueBrands = [...new Set(onlyBrandsArray)]
-  //     // console.log('Brands: ', uniqueBrands)
-  //     //Return unique brands end
+  // //Sort by added start
+  // const oldestToNewestItem = [...dbData.items].sort((a, b) => a.added - b.added)
+  // const newestToOldestItem = [...dbData.items]
+  //   .sort((a, b) => a.added - b.added)
+  //   .reverse()
+  // //Sort by added end
 
-  //     //Filter by brand start
-  //     let filterKeys = ['Metz---Kautzer', 'Feil-Dooley-and-Reinger']
-  //     const filteredResult = filterKeys.length
-  //       ? filterKeys
-  //           .map((key) => [...res.data.filter((e) => e.manufacturer === key)])
-  //           .flat(1)
-  //       : res.data
-  //     // console.log('Filtered result: ', filteredResult)
-  //     //Filter by brand end
+  // //Return unique brands start
+  // const onlyBrandsArray = dbData.items.map((e) => e.manufacturer)
+  // const uniqueBrands = [...new Set(onlyBrandsArray)]
+  // //Return unique brands end
 
-  //     //Brand search start
-  //     let searchKey = 'Metz---Kautzer'
-  //     const searchResults = uniqueBrands
-  //       .map((e) => e.includes(searchKey) && e)
-  //       .filter((e) => e !== false)
-  //     // console.log('Search results: ', searchResults)
-  //     //Brand search end
+  // //Filter by brand start
+  // let filterKeys = ['Metz---Kautzer', 'Feil-Dooley-and-Reinger']
+  // const filteredResult = filterKeys.length
+  //   ? filterKeys
+  //       .map((key) => [...dbData.items.filter((e) => e.manufacturer === key)])
+  //       .flat(1)
+  //   : dbData.items
+  // //Filter by brand end
 
-  //     //Return unique tags start
-  //     const onlyTagsArray = res.data.map((e) => e.tags).flat(1)
-  //     const uniqueTags = [...new Set(onlyTagsArray)]
-  //     // console.log('Tags: ', uniqueTags)
-  //     //Return unique tags end
+  // //Brand search start
+  // let searchKey = 'Metz---Kautzer'
+  // const searchResults = uniqueBrands
+  //   .map((e) => e.includes(searchKey) && e)
+  //   .filter((e) => e !== false)
+  // //Brand search end
 
-  //     //Filter by tags start
-  //     let tagFilterKeys = ['Trees', 'Beach', 'Ocean']
-  //     const filteredByTagsResult = tagFilterKeys.length
-  //       ? tagFilterKeys
-  //           .map((key) => [...res.data.filter((e) => e.tags.includes(key))])
-  //           .flat(1)
-  //       : res.data
-  //     // console.log('Filtered by tags result: ', filteredByTagsResult)
-  //     //Filter by tags end
+  // //Return unique tags start
+  // const onlyTagsArray = dbData.items.map((e) => e.tags).flat(1)
+  // const uniqueTags = [...new Set(onlyTagsArray)]
+  // //Return unique tags end
 
-  //     //Tag search start
-  //     let searchTag = 'am'
-  //     const searchTagsResults = uniqueTags
-  //       .map((e) => e.includes(searchTag) && e)
-  //       .filter((e) => e !== false)
-  //     // console.log('Search tag results: ', searchTagsResults)
-  //     //Tag search end
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
+  // //Filter by tags start
+  // let tagFilterKeys = ['Trees', 'Beach', 'Ocean']
+  // const filteredByTagsResult = tagFilterKeys.length
+  //   ? tagFilterKeys
+  //       .map((key) => [...dbData.items.filter((e) => e.tags.includes(key))])
+  //       .flat(1)
+  //   : dbData.items
+  // //Filter by tags end
+
+  // //Tag search start
+  // let searchTag = 'Beach'
+  // const searchTagsResults = uniqueTags
+  //   .map((e) => e.includes(searchTag) && e)
+  //   .filter((e) => e !== false)
+  // //Tag search end
+  
   return (
     <div className="Home">
       <Header />

@@ -10,7 +10,6 @@ import { addItemToCart } from '../../state/actions/cartActions'
 const ProductItem = ({ item, addItemToCart }) => {
   const { price, name, itemType } = item
   const clickHandler = () => {
-    console.log('baban')
     addItemToCart(item)
   }
   return (

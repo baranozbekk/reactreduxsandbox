@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+
+import { addItemToCart, removeItemFromCart } from '../../state/actions/cartActions'
 
 import PlusSign from './plusSign.svg'
 import MinusSign from './minusSign.svg'
 
-export default function CartDetail() {
-  const [cartItems, setCartItems] = useState([
-    { name: 'Example Product1', price: 15.99, quantity: 3, key: 1 },
-    { name: 'Example Product2', price: 15, quantity: 1, key: 2 },
-    { name: 'Example Product3', price: 15, quantity: 1, key: 3 },
-  ])
+const CartDetail = ({cartData, addItemToCart, removeItemFromCart}) => {
+  const cart = cartData.cart
+  const [cartItems, setCartItems] = useState(cart)
 
   const reduceCartItemQuantity = (index) => {
-    const nextCartItems = cartItems.map((cartItem, i) => {
-      if (i === cartItems.indexOf(index)) {
-        cartItem.quantity = cartItem.quantity - 1
-        return cartItem
-      } else {
-        return cartItem
-      }
-    })
-    setCartItems(nextCartItems)
+    const { quantity, ...rest } = index;
+    const withoutQuantity = rest;
+    removeItemFromCart(withoutQuantity)
   }
 
   const increaseCartItemQuantity = (index) => {
-    const nextCartItems = cartItems.map((cartItem, i) => {
-      if (i === cartItems.indexOf(index)) {
-        cartItem.quantity = cartItem.quantity + 1
-        return cartItem
-      } else {
-        return cartItem
-      }
-    })
-    setCartItems(nextCartItems)
+    const { quantity, ...rest } = index;
+    const withoutQuantity = rest;
+    addItemToCart(withoutQuantity)
   }
+
+  useEffect(() => {
+    setCartItems(cart)
+  }, [cart])
 
   return (
     <div className="cartDetail">
@@ -68,14 +61,24 @@ export default function CartDetail() {
         )}
         <div className="total-sum">
           <div className="total-sum-container">
-            {'₺' +
-              cartItems
-                .map((item) => item.price * item.quantity)
-                .reduce((a, b) => a + b, 0)
-                .toFixed(2)}
+            {
+              cartItems.length === 0 ? "₺0" : "₺" + cartItems.map(e => e.price * e.quantity).reduce((a, b) => a + b, 0).toFixed(2)
+            }
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+CartDetail.propTypes = {
+  cartData: PropTypes.object.isRequired,
+  addItemToCart: PropTypes.func.isRequired,
+  removeItemFromCart: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  cartData: state.cartData
+})
+
+export default connect(mapStateToProps, {addItemToCart, removeItemFromCart})(CartDetail)
